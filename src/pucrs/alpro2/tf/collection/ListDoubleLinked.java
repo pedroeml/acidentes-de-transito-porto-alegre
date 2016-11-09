@@ -229,7 +229,10 @@ public class ListDoubleLinked<E> implements ListTAD<E> {
 
 			@Override
 			public void remove() {
-				throw new UnsupportedOperationException();
+				if (atual.prev == header)
+					throw new NoSuchElementException();
+				Node<E> prev = atual.prev;
+				removeNode(prev);
 			}
 		};
 	}
